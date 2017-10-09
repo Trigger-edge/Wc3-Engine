@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wc3 Engine", "Wc3 Engine.csproj", "{A8E554E0-F120-4333-A7AD-B5EA62B6A9BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8E554E0-F120-4333-A7AD-B5EA62B6A9BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8E554E0-F120-4333-A7AD-B5EA62B6A9BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8E554E0-F120-4333-A7AD-B5EA62B6A9BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8E554E0-F120-4333-A7AD-B5EA62B6A9BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0D04A6E-9A8F-42DA-AA16-0A68B5442AA5}
+	EndGlobalSection
+EndGlobal
