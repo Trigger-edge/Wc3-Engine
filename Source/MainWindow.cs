@@ -47,6 +47,7 @@ namespace Wc3Engine
 
 
 
+
             mainTabControl.SelectedTab = mapInfoTab;
             abilities_tabControl.SelectedTab = custom_tabPage;
 
