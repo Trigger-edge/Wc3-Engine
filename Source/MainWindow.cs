@@ -46,8 +46,6 @@ namespace Wc3Engine
             //DebugMsg("A000".ToIntObjectId().ToString());
 
 
-
-
             mainTabControl.SelectedTab = mapInfoTab;
             abilities_tabControl.SelectedTab = custom_tabPage;
 
