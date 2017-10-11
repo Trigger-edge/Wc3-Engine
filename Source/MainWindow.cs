@@ -42,11 +42,14 @@ namespace Wc3Engine
             Ability.TLVStandard = StandarAbilitiesTab;
             Ability.TLVCustom = CustomAbilitiesTab;
 
+            DataVisualizer.panel = GUIHelper_tableLayout;
             //GUIHelper_accordion.Add(missileBasics_panel, "Missile Handle", "", 1, true);
 
-            //DataVisualizer visualizer = new DataVisualizer(3);
-            //guihelper_panel.Controls.Add(visualizer);
-            //visualizer.Location = new Point(3, 590);
+            DataVisualizer visualizer = new DataVisualizer("Test 1", 3);
+            visualizer = new DataVisualizer("Test 2", 5);
+            visualizer = new DataVisualizer("Test 3", 10);
+            //visualizer.Visible = false;
+
 
 
             mainTabControl.SelectedTab = mapInfoTab;

@@ -78,13 +78,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Source\Accordion\Accordion.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Source\Accordion\OpacityEx.cs" />
-    <Compile Include="Source\Accordion\ResizeBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Source\GUI Helper\Controls\DataVisualizer.cs">
       <SubType>UserControl</SubType>
     </Compile>

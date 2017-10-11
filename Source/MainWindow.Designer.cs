@@ -66,6 +66,8 @@
             this.name_olvColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.suffix_olvColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.guihelper_panel = new System.Windows.Forms.Panel();
+            this.GUIHelper_tableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.addComponent_button = new System.Windows.Forms.Button();
             this.buffIcon_pictureBox = new System.Windows.Forms.PictureBox();
             this.abilityIcon_pictureBox = new System.Windows.Forms.PictureBox();
             this.abilityDescription_readOnlyRichTextBox = new ReadOnlyRichTextBox();
@@ -123,10 +125,10 @@
             this.saveFile_map = new System.Windows.Forms.SaveFileDialog();
             this.changeMapPreview_FileDialog = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
+            this.testMap_button = new System.Windows.Forms.Button();
             this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
             this.app_toolTip = new CustomToolTipDemo.CustomizedToolTip();
             this.guiHelper_ToolTip = new CustomToolTipDemo.CustomizedToolTip();
-            this.testMap_button = new System.Windows.Forms.Button();
             this.main_toolStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.assetsTab.SuspendLayout();
@@ -140,6 +142,7 @@
             this.custom_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LTVCustomAbilities)).BeginInit();
             this.guihelper_panel.SuspendLayout();
+            this.GUIHelper_tableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buffIcon_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.abilityIcon_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.abilityDescription_pictureBoxDummy)).BeginInit();
@@ -544,6 +547,7 @@
             // guihelper_panel
             // 
             this.guihelper_panel.AutoScroll = true;
+            this.guihelper_panel.Controls.Add(this.GUIHelper_tableLayout);
             this.guihelper_panel.Controls.Add(this.buffIcon_pictureBox);
             this.guihelper_panel.Controls.Add(this.abilityIcon_pictureBox);
             this.guihelper_panel.Controls.Add(this.abilityDescription_readOnlyRichTextBox);
@@ -556,10 +560,33 @@
             this.guihelper_panel.Size = new System.Drawing.Size(547, 392);
             this.guihelper_panel.TabIndex = 40;
             // 
+            // GUIHelper_tableLayout
+            // 
+            this.GUIHelper_tableLayout.AutoSize = true;
+            this.GUIHelper_tableLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.GUIHelper_tableLayout.ColumnCount = 1;
+            this.GUIHelper_tableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.GUIHelper_tableLayout.Controls.Add(this.addComponent_button, 0, 0);
+            this.GUIHelper_tableLayout.Location = new System.Drawing.Point(19, 300);
+            this.GUIHelper_tableLayout.Name = "GUIHelper_tableLayout";
+            this.GUIHelper_tableLayout.RowCount = 1;
+            this.GUIHelper_tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.GUIHelper_tableLayout.Size = new System.Drawing.Size(103, 37);
+            this.GUIHelper_tableLayout.TabIndex = 63;
+            // 
+            // addComponent_button
+            // 
+            this.addComponent_button.Location = new System.Drawing.Point(3, 3);
+            this.addComponent_button.Name = "addComponent_button";
+            this.addComponent_button.Size = new System.Drawing.Size(97, 31);
+            this.addComponent_button.TabIndex = 62;
+            this.addComponent_button.Text = "Add Component";
+            this.addComponent_button.UseVisualStyleBackColor = true;
+            // 
             // buffIcon_pictureBox
             // 
             this.buffIcon_pictureBox.Image = global::Wc3Engine.Properties.Resources.BTN_unknown;
-            this.buffIcon_pictureBox.Location = new System.Drawing.Point(19, 196);
+            this.buffIcon_pictureBox.Location = new System.Drawing.Point(10, 170);
             this.buffIcon_pictureBox.Name = "buffIcon_pictureBox";
             this.buffIcon_pictureBox.Size = new System.Drawing.Size(88, 88);
             this.buffIcon_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -569,7 +596,7 @@
             // abilityIcon_pictureBox
             // 
             this.abilityIcon_pictureBox.Image = global::Wc3Engine.Properties.Resources.BTN_unknown;
-            this.abilityIcon_pictureBox.Location = new System.Drawing.Point(19, 89);
+            this.abilityIcon_pictureBox.Location = new System.Drawing.Point(10, 69);
             this.abilityIcon_pictureBox.Name = "abilityIcon_pictureBox";
             this.abilityIcon_pictureBox.Size = new System.Drawing.Size(88, 83);
             this.abilityIcon_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -580,7 +607,7 @@
             // 
             this.abilityDescription_readOnlyRichTextBox.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.abilityDescription_readOnlyRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.abilityDescription_readOnlyRichTextBox.Location = new System.Drawing.Point(135, 57);
+            this.abilityDescription_readOnlyRichTextBox.Location = new System.Drawing.Point(126, 57);
             this.abilityDescription_readOnlyRichTextBox.Name = "abilityDescription_readOnlyRichTextBox";
             this.abilityDescription_readOnlyRichTextBox.Size = new System.Drawing.Size(379, 212);
             this.abilityDescription_readOnlyRichTextBox.TabIndex = 36;
@@ -589,7 +616,7 @@
             // abilityDescription_pictureBoxDummy
             // 
             this.abilityDescription_pictureBoxDummy.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.abilityDescription_pictureBoxDummy.Location = new System.Drawing.Point(123, 45);
+            this.abilityDescription_pictureBoxDummy.Location = new System.Drawing.Point(114, 45);
             this.abilityDescription_pictureBoxDummy.Name = "abilityDescription_pictureBoxDummy";
             this.abilityDescription_pictureBoxDummy.Size = new System.Drawing.Size(403, 237);
             this.abilityDescription_pictureBoxDummy.TabIndex = 38;
@@ -601,7 +628,7 @@
             this.selectedLevel_comboBox.FormattingEnabled = true;
             this.selectedLevel_comboBox.Items.AddRange(new object[] {
             "Learn skill"});
-            this.selectedLevel_comboBox.Location = new System.Drawing.Point(455, 13);
+            this.selectedLevel_comboBox.Location = new System.Drawing.Point(446, 13);
             this.selectedLevel_comboBox.Name = "selectedLevel_comboBox";
             this.selectedLevel_comboBox.Size = new System.Drawing.Size(69, 21);
             this.selectedLevel_comboBox.TabIndex = 58;
@@ -610,7 +637,7 @@
             // 
             this.abilityDescriptionDummy_pictureBox2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.abilityDescriptionDummy_pictureBox2.Image = global::Wc3Engine.Properties.Resources.TooltipBorder;
-            this.abilityDescriptionDummy_pictureBox2.Location = new System.Drawing.Point(121, 43);
+            this.abilityDescriptionDummy_pictureBox2.Location = new System.Drawing.Point(112, 43);
             this.abilityDescriptionDummy_pictureBox2.Name = "abilityDescriptionDummy_pictureBox2";
             this.abilityDescriptionDummy_pictureBox2.Size = new System.Drawing.Size(407, 241);
             this.abilityDescriptionDummy_pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -620,7 +647,7 @@
             // selectedLevel_label
             // 
             this.selectedLevel_label.AutoSize = true;
-            this.selectedLevel_label.Location = new System.Drawing.Point(413, 16);
+            this.selectedLevel_label.Location = new System.Drawing.Point(404, 16);
             this.selectedLevel_label.Name = "selectedLevel_label";
             this.selectedLevel_label.Size = new System.Drawing.Size(36, 13);
             this.selectedLevel_label.TabIndex = 61;
@@ -1164,6 +1191,21 @@
             this.label1.Text = "Loading map...";
             this.label1.Visible = false;
             // 
+            // testMap_button
+            // 
+            this.testMap_button.AutoSize = true;
+            this.testMap_button.BackColor = System.Drawing.SystemColors.Control;
+            this.testMap_button.BackgroundImage = global::Wc3Engine.Properties.Resources.Test_map_icon;
+            this.testMap_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.testMap_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.testMap_button.Location = new System.Drawing.Point(918, 124);
+            this.testMap_button.MinimumSize = new System.Drawing.Size(64, 64);
+            this.testMap_button.Name = "testMap_button";
+            this.testMap_button.Size = new System.Drawing.Size(64, 64);
+            this.testMap_button.TabIndex = 6;
+            this.testMap_button.UseVisualStyleBackColor = false;
+            this.testMap_button.Click += new System.EventHandler(this.MapTest_Click);
+            // 
             // loadingCircle1
             // 
             this.loadingCircle1.Active = false;
@@ -1197,21 +1239,6 @@
             this.guiHelper_ToolTip.OwnerDraw = true;
             this.guiHelper_ToolTip.ReshowDelay = 100;
             this.guiHelper_ToolTip.Size = new System.Drawing.Size(200, 60);
-            // 
-            // testMap_button
-            // 
-            this.testMap_button.AutoSize = true;
-            this.testMap_button.BackColor = System.Drawing.SystemColors.Control;
-            this.testMap_button.BackgroundImage = global::Wc3Engine.Properties.Resources.Test_map_icon;
-            this.testMap_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.testMap_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.testMap_button.Location = new System.Drawing.Point(918, 124);
-            this.testMap_button.MinimumSize = new System.Drawing.Size(64, 64);
-            this.testMap_button.Name = "testMap_button";
-            this.testMap_button.Size = new System.Drawing.Size(64, 64);
-            this.testMap_button.TabIndex = 6;
-            this.testMap_button.UseVisualStyleBackColor = false;
-            this.testMap_button.Click += new System.EventHandler(this.MapTest_Click);
             // 
             // Wc3Engine
             // 
@@ -1248,6 +1275,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.LTVCustomAbilities)).EndInit();
             this.guihelper_panel.ResumeLayout(false);
             this.guihelper_panel.PerformLayout();
+            this.GUIHelper_tableLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.buffIcon_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.abilityIcon_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.abilityDescription_pictureBoxDummy)).EndInit();
@@ -1377,6 +1405,8 @@
         private System.Windows.Forms.Label mi_colli;
         private System.Windows.Forms.Label mi_speed;
         public System.Windows.Forms.NumericUpDown GUI_Missile_speed;
+        private System.Windows.Forms.Button addComponent_button;
+        private System.Windows.Forms.TableLayoutPanel GUIHelper_tableLayout;
     }
 }
 
