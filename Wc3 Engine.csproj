@@ -85,7 +85,13 @@
     <Compile Include="Source\Accordion\ResizeBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\GUI Helper\LTVAbilityModel.cs" />
+    <Compile Include="Source\GUI Helper\Controls\DataVisualizer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\GUI Helper\Controls\DataVisualizer.Designer.cs">
+      <DependentUpon>DataVisualizer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\GUI Helper\TLVModels\TLVBase.cs" />
     <Compile Include="Source\Controls\CustomizedToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -101,6 +107,8 @@
     <Compile Include="Source\Controls\TransparentPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Source\GUI Helper\TLVModels\AbilityModel.cs" />
+    <Compile Include="Source\GUI Helper\TLVModels\FolderModel.cs" />
     <Compile Include="Source\Utils\ObjectId.cs" />
     <Compile Include="Source\Utils\SubstringExtensions.cs" />
     <Compile Include="Source\Utils\BinaryUtility.cs" />
@@ -119,8 +127,8 @@
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\GUI Helper\GUIModule.cs" />
-    <Compile Include="Source\GUI Helper\Modules\Ability.cs" />
-    <Compile Include="Source\GUI Helper\Modules\Missile.cs" />
+    <Compile Include="Source\GUI Helper\Ability.cs" />
+    <Compile Include="Source\GUI Helper\Controls\Missile.cs" />
     <Compile Include="Source\GUI Helper\NameSuffixDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +254,9 @@
     <Compile Include="Source\Warcraft Environment\WTS.cs" />
     <EmbeddedResource Include="Source\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\GUI Helper\Controls\DataVisualizer.resx">
+      <DependentUpon>DataVisualizer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\GUI Helper\NameSuffixDialog.resx">
       <DependentUpon>NameSuffixDialog.cs</DependentUpon>

@@ -22,8 +22,8 @@ namespace Wc3Engine
         internal NameSuffixDialog nameSuffixDialog = new NameSuffixDialog();
         public Settings configBox = new Settings();
 
-        public static TLVModel StandarAbilitiesTab;
-        public static TLVModel CustomAbilitiesTab;
+        public static TLVBase StandarAbilitiesTab;
+        public static TLVBase CustomAbilitiesTab;
 
 
         public Wc3Engine()
@@ -35,15 +35,18 @@ namespace Wc3Engine
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
 
             JassScript.Load();
-            GUIModule.Init();
+            //GUIModule.Init();
 
-            StandarAbilitiesTab = new TLVModel(LTVStadarAbilities, name_olvColumn2, false);
-            CustomAbilitiesTab = new TLVModel(LTVCustomAbilities, name_olvColumn, true);
+            StandarAbilitiesTab = new TLVBase(LTVStadarAbilities, name_olvColumn2, false);
+            CustomAbilitiesTab = new TLVBase(LTVCustomAbilities, name_olvColumn, true);
+            Ability.TLVStandard = StandarAbilitiesTab;
+            Ability.TLVCustom = CustomAbilitiesTab;
 
-            GUIHelper_accordion.Add(missileBasics_panel, "Missile Handle", "", 1, true);
+            //GUIHelper_accordion.Add(missileBasics_panel, "Missile Handle", "", 1, true);
 
-
-            //DebugMsg("A000".ToIntObjectId().ToString());
+            //DataVisualizer visualizer = new DataVisualizer(3);
+            //guihelper_panel.Controls.Add(visualizer);
+            //visualizer.Location = new Point(3, 590);
 
 
             mainTabControl.SelectedTab = mapInfoTab;
@@ -133,18 +136,19 @@ namespace Wc3Engine
             }
         }
 
-        private void toolStrip_configButton_Click(object sender, EventArgs e)
+        private void ConfigButton_OnClick(object sender, EventArgs e)
         {
             configBox.ShowDialog();
         }
 
-        private void editMapInfo_button_Click(object sender, EventArgs e)
+        private void EditMapInfo_OnClick(object sender, EventArgs e)
         {
             if (editMapInfo_button.Text == "Edit")
             {
                 editMapInfo_button.Text = "Save";
                 W3I.ShowEditBox(true);
             }
+
             else
             {
                 W3I.Write(W3I.mapName, mapName_textBox.Text);
@@ -187,20 +191,22 @@ namespace Wc3Engine
         {
             bool expand = false;
             string path = "";
+            string name = "New Ability " + CustomAbilitiesTab.AbilityMasterList.
+                FindAll(x => x.Path.Contains("New Ability ")).Count.ToString();
 
             if (null != LTVCustomAbilities.SelectedObject)
             {
-                if (LTVCustomAbilities.SelectedObject is TLVModel.Folder)
+                if (LTVCustomAbilities.SelectedObject is FolderModel)
                 {
                     expand = true;
-                    path = ((TLVModel.Folder)LTVCustomAbilities.SelectedObject).Path + @"\";
+                    path = ((FolderModel)LTVCustomAbilities.SelectedObject).Path;
                 }
 
-                else if (LTVCustomAbilities.SelectedObject is TLVModel.Item && null != ((TLVModel.Item)LTVCustomAbilities.SelectedObject).Parent)
-                    path = ((TLVModel.Item)LTVCustomAbilities.SelectedObject).Parent.Path + @"\";
+                else if (LTVCustomAbilities.SelectedObject is AbilityModel && null != ((AbilityModel)LTVCustomAbilities.SelectedObject).Parent)
+                    path = ((AbilityModel)LTVCustomAbilities.SelectedObject).Parent.Path;
             }
 
-            CustomAbilitiesTab.CreateItem(path + "New Ability " + CustomAbilitiesTab.ItemMasterList.FindAll(x => x.Path.Contains("New Ability ")).Count.ToString());
+            Ability.Create(path + name, name);
 
             if (expand)
                 LTVCustomAbilities.Expand(LTVCustomAbilities.SelectedObject);
@@ -213,16 +219,19 @@ namespace Wc3Engine
 
             if (null != LTVCustomAbilities.SelectedObject)
             {
-                if (LTVCustomAbilities.SelectedObject is TLVModel.Folder)
+                if (LTVCustomAbilities.SelectedObject is FolderModel)
                 {
                     expand = true;
-                    path = ((TLVModel.Folder)LTVCustomAbilities.SelectedObject).Path + @"\";
+                    path = ((FolderModel)LTVCustomAbilities.SelectedObject).Path + @"\";
                 }
-                else if (LTVCustomAbilities.SelectedObject is TLVModel.Item && null != ((TLVModel.Item)LTVCustomAbilities.SelectedObject).Parent)
-                    path = ((TLVModel.Item)LTVCustomAbilities.SelectedObject).Parent.Path + @"\";
+
+                else if (LTVCustomAbilities.SelectedObject is AbilityModel && null != ((AbilityModel)LTVCustomAbilities.SelectedObject).Parent)
+                    path = ((AbilityModel)LTVCustomAbilities.SelectedObject).Parent.Path + @"\";
             }
 
-            CustomAbilitiesTab.CreateFolder(path + "New Folder " + CustomAbilitiesTab.FolderMasterList.FindAll(x => x.Path.Contains("New Folder ")).Count.ToString());
+            //CustomAbilitiesTab.CreateFolder(path + "New Folder " + CustomAbilitiesTab.FolderMasterList.FindAll(x => x.Path.Contains("New Folder ")).Count.ToString());
+            new FolderModel(CustomAbilitiesTab, path + "New Folder " + 
+                CustomAbilitiesTab.FolderMasterList.FindAll(x => x.Path.Contains("New Folder ")).Count.ToString());
 
             if (expand)
                 LTVCustomAbilities.Expand(LTVCustomAbilities.SelectedObject);
@@ -230,27 +239,24 @@ namespace Wc3Engine
 
         private void OnItemRemoveClick(object sender, EventArgs e)
         {
-            if (LTVCustomAbilities.SelectedObject is TLVModel.Folder folder)
-                CustomAbilitiesTab.Delete(folder.Path + @"\" + folder.Name);
+            if (LTVCustomAbilities.SelectedObject is FolderModel folder)
+                CustomAbilitiesTab.DeleteObject(folder.Path);
 
-            else if (LTVCustomAbilities.SelectedObject is TLVModel.Item _item)
-            {
-                if ("" == _item.Path)
-                    CustomAbilitiesTab.Delete(_item.Name);
-                else
-                    CustomAbilitiesTab.Delete(_item.Path + @"\" + _item.Name);
-            }
+            else if (LTVCustomAbilities.SelectedObject is AbilityModel _item)
+                CustomAbilitiesTab.DeleteObject(_item.Path);
+
+            LTVCustomAbilities.BuildList();
         }
 
         private void LTVAbility_ModelCanDrop(object sender, ModelDropEventArgs e)
         {
-            object item = e.TargetModel;
+            /*object item = e.TargetModel;
 
             if (item == null)
                 e.Effect = DragDropEffects.None;
-            else if (item is TLVModel.Folder targetFolder)
+            else if (item is FolderModel targetFolder)
                 e.Effect = DragDropEffects.Move;
-            else if (item is TLVModel.Item)
+            else if (item is Item)
             {
                 if (e.DropTargetLocation == DropTargetLocation.AboveItem || e.DropTargetLocation == DropTargetLocation.BelowItem)
                     e.Effect = DragDropEffects.Move;
@@ -259,28 +265,28 @@ namespace Wc3Engine
                     e.Effect = DragDropEffects.None;
                     e.InfoMessage = "Can't drop this Ability here";
                 }
-            }
+            }*/
         }
 
         private void LTVAbility_ModelDropped(object sender, ModelDropEventArgs e)
         {
-            // If they didn't drop on anything, then don't do anything
+            /*// If they didn't drop on anything, then don't do anything
             if (e.TargetModel == null)
                 return;
 
-            if (e.TargetModel is TLVModel.Folder targetFolder)
+            if (e.TargetModel is FolderModel targetFolder)
             {
                 foreach (object item in e.SourceModels)
                 {
-                    if (item is TLVModel.Folder sourceFolder)
+                    if (item is FolderModel sourceFolder)
                         CustomAbilitiesTab.Move(sourceFolder.Path, targetFolder.Path);
 
-                    else if (item is TLVModel.Item sourceItem)
+                    else if (item is Item sourceItem)
                         CustomAbilitiesTab.Move(sourceItem.Path, targetFolder.Path);
                 }
             }
 
-            e.RefreshObjects();
+            e.RefreshObjects();*/
         }
 
         public Ability SelectedAbility;
@@ -290,9 +296,8 @@ namespace Wc3Engine
             if (null != e.Item && e.Item.Text.StartsWith("("))
             {
                 string id = e.Item.Text.Remove(5, e.Item.Text.Length - 5).Substring(1);
-                //Ability ability = Ability.Find(id);
-                SelectedAbility = Ability.Find(id);
 
+                SelectedAbility = Ability.Find(id);
                 SelectedAbility.UpdateOnSelect();
             }
         }

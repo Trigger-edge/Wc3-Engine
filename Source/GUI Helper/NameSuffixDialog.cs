@@ -14,13 +14,18 @@ namespace Wc3Engine
             Name_textBox.Text = Wc3Engine.This.SelectedAbility.Name;
             Suffix_textBox.Text = Wc3Engine.This.SelectedAbility.Suffix;
         }
-
+        
         private void Ok_button_Click(object sender, System.EventArgs e)
         {
-            Wc3Engine.This.SelectedAbility.Name = Name_textBox.Text;
-            Wc3Engine.This.SelectedAbility.Suffix = Suffix_textBox.Text;
+            Ability ability = Wc3Engine.This.SelectedAbility;
 
-            Wc3Engine.This.LTVCustomAbilities.UpdateObjects(Wc3Engine.CustomAbilitiesTab.MasterList);
+            ability.Name = Name_textBox.Text;
+            ability.Suffix = Suffix_textBox.Text;
+
+            ability.Model.Name = "(" + ability.CodeId + ") " + Name_textBox.Text;
+            ability.Model.Suffix = Suffix_textBox.Text;
+
+            Wc3Engine.This.LTVCustomAbilities.RefreshObject(Wc3Engine.This.SelectedAbility.Model);
             Close();
         }
     }

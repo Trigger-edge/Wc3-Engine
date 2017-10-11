@@ -66,6 +66,15 @@
             this.name_olvColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.suffix_olvColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.guihelper_panel = new System.Windows.Forms.Panel();
+            this.buffIcon_pictureBox = new System.Windows.Forms.PictureBox();
+            this.abilityIcon_pictureBox = new System.Windows.Forms.PictureBox();
+            this.abilityDescription_readOnlyRichTextBox = new ReadOnlyRichTextBox();
+            this.abilityDescription_pictureBoxDummy = new System.Windows.Forms.PictureBox();
+            this.selectedLevel_comboBox = new System.Windows.Forms.ComboBox();
+            this.abilityDescriptionDummy_pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.selectedLevel_label = new System.Windows.Forms.Label();
+            this.loadscreenTab = new System.Windows.Forms.TabPage();
+            this.loadScreen_groupBox = new System.Windows.Forms.GroupBox();
             this.missileBasics_panel = new System.Windows.Forms.GroupBox();
             this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -90,17 +99,6 @@
             this.mi_colli = new System.Windows.Forms.Label();
             this.mi_speed = new System.Windows.Forms.Label();
             this.GUI_Missile_speed = new System.Windows.Forms.NumericUpDown();
-            this.GUIHelperAcc_panel = new System.Windows.Forms.Panel();
-            this.GUIHelper_accordion = new Opulos.Core.UI.Accordion();
-            this.buffIcon_pictureBox = new System.Windows.Forms.PictureBox();
-            this.abilityIcon_pictureBox = new System.Windows.Forms.PictureBox();
-            this.abilityDescription_readOnlyRichTextBox = new ReadOnlyRichTextBox();
-            this.abilityDescription_pictureBoxDummy = new System.Windows.Forms.PictureBox();
-            this.selectedLevel_comboBox = new System.Windows.Forms.ComboBox();
-            this.abilityDescriptionDummy_pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.selectedLevel_label = new System.Windows.Forms.Label();
-            this.loadscreenTab = new System.Windows.Forms.TabPage();
-            this.loadScreen_groupBox = new System.Windows.Forms.GroupBox();
             this.playerSettingsTab = new System.Windows.Forms.TabPage();
             this.mapInfoTab = new System.Windows.Forms.TabPage();
             this.mapInfo_groupBox = new System.Windows.Forms.GroupBox();
@@ -125,10 +123,10 @@
             this.saveFile_map = new System.Windows.Forms.SaveFileDialog();
             this.changeMapPreview_FileDialog = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
-            this.testMap_button = new System.Windows.Forms.Button();
             this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
             this.app_toolTip = new CustomToolTipDemo.CustomizedToolTip();
             this.guiHelper_ToolTip = new CustomToolTipDemo.CustomizedToolTip();
+            this.testMap_button = new System.Windows.Forms.Button();
             this.main_toolStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.assetsTab.SuspendLayout();
@@ -142,6 +140,12 @@
             this.custom_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LTVCustomAbilities)).BeginInit();
             this.guihelper_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buffIcon_pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.abilityIcon_pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.abilityDescription_pictureBoxDummy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.abilityDescriptionDummy_pictureBox2)).BeginInit();
+            this.loadscreenTab.SuspendLayout();
+            this.loadScreen_groupBox.SuspendLayout();
             this.missileBasics_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GUI_Missile_count)).BeginInit();
@@ -153,12 +157,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GUI_Missile_collision)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GUI_Missile_arc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GUI_Missile_speed)).BeginInit();
-            this.GUIHelperAcc_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buffIcon_pictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.abilityIcon_pictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.abilityDescription_pictureBoxDummy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.abilityDescriptionDummy_pictureBox2)).BeginInit();
-            this.loadscreenTab.SuspendLayout();
             this.mapInfoTab.SuspendLayout();
             this.mapInfo_groupBox.SuspendLayout();
             this.mapinfo_subTabControl.SuspendLayout();
@@ -257,7 +255,7 @@
             this.toolStrip_configButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStrip_configButton.Name = "toolStrip_configButton";
             this.toolStrip_configButton.Size = new System.Drawing.Size(24, 24);
-            this.toolStrip_configButton.Click += new System.EventHandler(this.toolStrip_configButton_Click);
+            this.toolStrip_configButton.Click += new System.EventHandler(this.ConfigButton_OnClick);
             // 
             // openFile_map
             // 
@@ -375,11 +373,13 @@
             // newFolder_toolStripButton
             // 
             this.newFolder_toolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.newFolder_toolStripButton.Enabled = false;
             this.newFolder_toolStripButton.Image = global::Wc3Engine.Properties.Resources.folderIcon;
             this.newFolder_toolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newFolder_toolStripButton.Name = "newFolder_toolStripButton";
             this.newFolder_toolStripButton.Size = new System.Drawing.Size(21, 20);
             this.newFolder_toolStripButton.Text = "New Folder";
+            this.newFolder_toolStripButton.ToolTipText = "New Folder (Not implemented yet)";
             this.newFolder_toolStripButton.Click += new System.EventHandler(this.OnNewFolderClick);
             // 
             // delete_ToolStripButton
@@ -463,7 +463,7 @@
             this.LTVStadarAbilities.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.LTVStadarAbilities.IsSimpleDragSource = true;
             this.LTVStadarAbilities.IsSimpleDropSink = true;
-            this.LTVStadarAbilities.Location = new System.Drawing.Point(3, 6);
+            this.LTVStadarAbilities.Location = new System.Drawing.Point(6, 6);
             this.LTVStadarAbilities.Name = "LTVStadarAbilities";
             this.LTVStadarAbilities.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.LTVStadarAbilities.ShowGroups = false;
@@ -544,8 +544,6 @@
             // guihelper_panel
             // 
             this.guihelper_panel.AutoScroll = true;
-            this.guihelper_panel.Controls.Add(this.missileBasics_panel);
-            this.guihelper_panel.Controls.Add(this.GUIHelperAcc_panel);
             this.guihelper_panel.Controls.Add(this.buffIcon_pictureBox);
             this.guihelper_panel.Controls.Add(this.abilityIcon_pictureBox);
             this.guihelper_panel.Controls.Add(this.abilityDescription_readOnlyRichTextBox);
@@ -557,6 +555,97 @@
             this.guihelper_panel.Name = "guihelper_panel";
             this.guihelper_panel.Size = new System.Drawing.Size(547, 392);
             this.guihelper_panel.TabIndex = 40;
+            // 
+            // buffIcon_pictureBox
+            // 
+            this.buffIcon_pictureBox.Image = global::Wc3Engine.Properties.Resources.BTN_unknown;
+            this.buffIcon_pictureBox.Location = new System.Drawing.Point(19, 196);
+            this.buffIcon_pictureBox.Name = "buffIcon_pictureBox";
+            this.buffIcon_pictureBox.Size = new System.Drawing.Size(88, 88);
+            this.buffIcon_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.buffIcon_pictureBox.TabIndex = 49;
+            this.buffIcon_pictureBox.TabStop = false;
+            // 
+            // abilityIcon_pictureBox
+            // 
+            this.abilityIcon_pictureBox.Image = global::Wc3Engine.Properties.Resources.BTN_unknown;
+            this.abilityIcon_pictureBox.Location = new System.Drawing.Point(19, 89);
+            this.abilityIcon_pictureBox.Name = "abilityIcon_pictureBox";
+            this.abilityIcon_pictureBox.Size = new System.Drawing.Size(88, 83);
+            this.abilityIcon_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.abilityIcon_pictureBox.TabIndex = 35;
+            this.abilityIcon_pictureBox.TabStop = false;
+            // 
+            // abilityDescription_readOnlyRichTextBox
+            // 
+            this.abilityDescription_readOnlyRichTextBox.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.abilityDescription_readOnlyRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.abilityDescription_readOnlyRichTextBox.Location = new System.Drawing.Point(135, 57);
+            this.abilityDescription_readOnlyRichTextBox.Name = "abilityDescription_readOnlyRichTextBox";
+            this.abilityDescription_readOnlyRichTextBox.Size = new System.Drawing.Size(379, 212);
+            this.abilityDescription_readOnlyRichTextBox.TabIndex = 36;
+            this.abilityDescription_readOnlyRichTextBox.Text = "";
+            // 
+            // abilityDescription_pictureBoxDummy
+            // 
+            this.abilityDescription_pictureBoxDummy.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.abilityDescription_pictureBoxDummy.Location = new System.Drawing.Point(123, 45);
+            this.abilityDescription_pictureBoxDummy.Name = "abilityDescription_pictureBoxDummy";
+            this.abilityDescription_pictureBoxDummy.Size = new System.Drawing.Size(403, 237);
+            this.abilityDescription_pictureBoxDummy.TabIndex = 38;
+            this.abilityDescription_pictureBoxDummy.TabStop = false;
+            // 
+            // selectedLevel_comboBox
+            // 
+            this.selectedLevel_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.selectedLevel_comboBox.FormattingEnabled = true;
+            this.selectedLevel_comboBox.Items.AddRange(new object[] {
+            "Learn skill"});
+            this.selectedLevel_comboBox.Location = new System.Drawing.Point(455, 13);
+            this.selectedLevel_comboBox.Name = "selectedLevel_comboBox";
+            this.selectedLevel_comboBox.Size = new System.Drawing.Size(69, 21);
+            this.selectedLevel_comboBox.TabIndex = 58;
+            // 
+            // abilityDescriptionDummy_pictureBox2
+            // 
+            this.abilityDescriptionDummy_pictureBox2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.abilityDescriptionDummy_pictureBox2.Image = global::Wc3Engine.Properties.Resources.TooltipBorder;
+            this.abilityDescriptionDummy_pictureBox2.Location = new System.Drawing.Point(121, 43);
+            this.abilityDescriptionDummy_pictureBox2.Name = "abilityDescriptionDummy_pictureBox2";
+            this.abilityDescriptionDummy_pictureBox2.Size = new System.Drawing.Size(407, 241);
+            this.abilityDescriptionDummy_pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.abilityDescriptionDummy_pictureBox2.TabIndex = 37;
+            this.abilityDescriptionDummy_pictureBox2.TabStop = false;
+            // 
+            // selectedLevel_label
+            // 
+            this.selectedLevel_label.AutoSize = true;
+            this.selectedLevel_label.Location = new System.Drawing.Point(413, 16);
+            this.selectedLevel_label.Name = "selectedLevel_label";
+            this.selectedLevel_label.Size = new System.Drawing.Size(36, 13);
+            this.selectedLevel_label.TabIndex = 61;
+            this.selectedLevel_label.Text = "Level:";
+            // 
+            // loadscreenTab
+            // 
+            this.loadscreenTab.Controls.Add(this.loadScreen_groupBox);
+            this.loadscreenTab.Location = new System.Drawing.Point(4, 25);
+            this.loadscreenTab.Name = "loadscreenTab";
+            this.loadscreenTab.Size = new System.Drawing.Size(876, 418);
+            this.loadscreenTab.TabIndex = 5;
+            this.loadscreenTab.Text = "Load screen";
+            this.loadscreenTab.UseVisualStyleBackColor = true;
+            // 
+            // loadScreen_groupBox
+            // 
+            this.loadScreen_groupBox.Controls.Add(this.missileBasics_panel);
+            this.loadScreen_groupBox.Location = new System.Drawing.Point(0, 0);
+            this.loadScreen_groupBox.Name = "loadScreen_groupBox";
+            this.loadScreen_groupBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.loadScreen_groupBox.Size = new System.Drawing.Size(876, 418);
+            this.loadScreen_groupBox.TabIndex = 0;
+            this.loadScreen_groupBox.TabStop = false;
+            this.loadScreen_groupBox.Text = "Load screen";
             // 
             // missileBasics_panel
             // 
@@ -583,10 +672,10 @@
             this.missileBasics_panel.Controls.Add(this.mi_colli);
             this.missileBasics_panel.Controls.Add(this.mi_speed);
             this.missileBasics_panel.Controls.Add(this.GUI_Missile_speed);
-            this.missileBasics_panel.Location = new System.Drawing.Point(11, 353);
+            this.missileBasics_panel.Location = new System.Drawing.Point(134, 34);
             this.missileBasics_panel.Name = "missileBasics_panel";
             this.missileBasics_panel.Size = new System.Drawing.Size(509, 219);
-            this.missileBasics_panel.TabIndex = 63;
+            this.missileBasics_panel.TabIndex = 64;
             this.missileBasics_panel.TabStop = false;
             // 
             // numericUpDown11
@@ -633,7 +722,6 @@
             this.GUI_Missile_count.Name = "GUI_Missile_count";
             this.GUI_Missile_count.Size = new System.Drawing.Size(62, 20);
             this.GUI_Missile_count.TabIndex = 2;
-            this.GUI_Missile_count.ValueChanged += new System.EventHandler(this.OnMissileNumericChanged);
             // 
             // label3
             // 
@@ -834,172 +922,6 @@
             this.GUI_Missile_speed.Size = new System.Drawing.Size(118, 20);
             this.GUI_Missile_speed.TabIndex = 12;
             // 
-            // GUIHelperAcc_panel
-            // 
-            this.GUIHelperAcc_panel.AutoScroll = true;
-            this.GUIHelperAcc_panel.AutoSize = true;
-            this.GUIHelperAcc_panel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.GUIHelperAcc_panel.BackColor = System.Drawing.SystemColors.Control;
-            this.GUIHelperAcc_panel.Controls.Add(this.GUIHelper_accordion);
-            this.GUIHelperAcc_panel.Location = new System.Drawing.Point(11, 314);
-            this.GUIHelperAcc_panel.Name = "GUIHelperAcc_panel";
-            this.GUIHelperAcc_panel.Size = new System.Drawing.Size(0, 0);
-            this.GUIHelperAcc_panel.TabIndex = 62;
-            // 
-            // GUIHelper_accordion
-            // 
-            this.GUIHelper_accordion.AddResizeBars = false;
-            this.GUIHelper_accordion.AllowMouseResize = false;
-            this.GUIHelper_accordion.AnimateCloseEffect = ((Opulos.Core.UI.AnimateWindowFlags)(((Opulos.Core.UI.AnimateWindowFlags.VerticalNegative | Opulos.Core.UI.AnimateWindowFlags.Hide) 
-            | Opulos.Core.UI.AnimateWindowFlags.Slide)));
-            this.GUIHelper_accordion.AnimateCloseMillis = 0;
-            this.GUIHelper_accordion.AnimateOpenEffect = ((Opulos.Core.UI.AnimateWindowFlags)(((Opulos.Core.UI.AnimateWindowFlags.VerticalPositive | Opulos.Core.UI.AnimateWindowFlags.Show) 
-            | Opulos.Core.UI.AnimateWindowFlags.Slide)));
-            this.GUIHelper_accordion.AnimateOpenMillis = 0;
-            this.GUIHelper_accordion.AutoFixDockStyle = true;
-            this.GUIHelper_accordion.AutoScroll = true;
-            this.GUIHelper_accordion.AutoSize = true;
-            this.GUIHelper_accordion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.GUIHelper_accordion.BackColor = System.Drawing.SystemColors.Control;
-            this.GUIHelper_accordion.CheckBoxFactory = null;
-            this.GUIHelper_accordion.CheckBoxMargin = new System.Windows.Forms.Padding(0);
-            this.GUIHelper_accordion.ContentBackColor = null;
-            this.GUIHelper_accordion.ContentMargin = null;
-            this.GUIHelper_accordion.ContentPadding = new System.Windows.Forms.Padding(5, 2, 5, 2);
-            this.GUIHelper_accordion.ControlBackColor = null;
-            this.GUIHelper_accordion.ControlMinimumHeightIsItsPreferredHeight = true;
-            this.GUIHelper_accordion.ControlMinimumWidthIsItsPreferredWidth = true;
-            this.GUIHelper_accordion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GUIHelper_accordion.DownArrow = null;
-            this.GUIHelper_accordion.FillHeight = true;
-            this.GUIHelper_accordion.FillLastOpened = false;
-            this.GUIHelper_accordion.FillModeGrowOnly = false;
-            this.GUIHelper_accordion.FillResetOnCollapse = false;
-            this.GUIHelper_accordion.FillWidth = true;
-            this.GUIHelper_accordion.GrabCursor = System.Windows.Forms.Cursors.SizeNS;
-            this.GUIHelper_accordion.GrabRequiresPositiveFillWeight = true;
-            this.GUIHelper_accordion.GrabWidth = 6;
-            this.GUIHelper_accordion.GrowAndShrink = true;
-            this.GUIHelper_accordion.Insets = new System.Windows.Forms.Padding(0);
-            this.GUIHelper_accordion.Location = new System.Drawing.Point(0, 0);
-            this.GUIHelper_accordion.Name = "GUIHelper_accordion";
-            this.GUIHelper_accordion.OpenOnAdd = false;
-            this.GUIHelper_accordion.OpenOneOnly = false;
-            this.GUIHelper_accordion.ResizeBarFactory = null;
-            this.GUIHelper_accordion.ResizeBarsAlign = 0.5D;
-            this.GUIHelper_accordion.ResizeBarsArrowKeyDelta = 10;
-            this.GUIHelper_accordion.ResizeBarsFadeInMillis = 800;
-            this.GUIHelper_accordion.ResizeBarsFadeOutMillis = 800;
-            this.GUIHelper_accordion.ResizeBarsFadeProximity = 24;
-            this.GUIHelper_accordion.ResizeBarsFill = 1D;
-            this.GUIHelper_accordion.ResizeBarsKeepFocusAfterMouseDrag = false;
-            this.GUIHelper_accordion.ResizeBarsKeepFocusIfControlOutOfView = true;
-            this.GUIHelper_accordion.ResizeBarsKeepFocusOnClick = true;
-            this.GUIHelper_accordion.ResizeBarsMargin = null;
-            this.GUIHelper_accordion.ResizeBarsMinimumLength = 50;
-            this.GUIHelper_accordion.ResizeBarsStayInViewOnArrowKey = true;
-            this.GUIHelper_accordion.ResizeBarsStayInViewOnMouseDrag = true;
-            this.GUIHelper_accordion.ResizeBarsStayVisibleIfFocused = true;
-            this.GUIHelper_accordion.ResizeBarsTabStop = true;
-            this.GUIHelper_accordion.ShowPartiallyVisibleResizeBars = false;
-            this.GUIHelper_accordion.ShowToolMenu = true;
-            this.GUIHelper_accordion.ShowToolMenuOnHoverWhenClosed = false;
-            this.GUIHelper_accordion.ShowToolMenuOnRightClick = true;
-            this.GUIHelper_accordion.ShowToolMenuRequiresPositiveFillWeight = false;
-            this.GUIHelper_accordion.Size = new System.Drawing.Size(0, 0);
-            this.GUIHelper_accordion.TabIndex = 0;
-            this.GUIHelper_accordion.UpArrow = null;
-            // 
-            // buffIcon_pictureBox
-            // 
-            this.buffIcon_pictureBox.Image = global::Wc3Engine.Properties.Resources.BTN_unknown;
-            this.buffIcon_pictureBox.Location = new System.Drawing.Point(11, 175);
-            this.buffIcon_pictureBox.Name = "buffIcon_pictureBox";
-            this.buffIcon_pictureBox.Size = new System.Drawing.Size(88, 88);
-            this.buffIcon_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.buffIcon_pictureBox.TabIndex = 49;
-            this.buffIcon_pictureBox.TabStop = false;
-            // 
-            // abilityIcon_pictureBox
-            // 
-            this.abilityIcon_pictureBox.Image = global::Wc3Engine.Properties.Resources.BTN_unknown;
-            this.abilityIcon_pictureBox.Location = new System.Drawing.Point(11, 68);
-            this.abilityIcon_pictureBox.Name = "abilityIcon_pictureBox";
-            this.abilityIcon_pictureBox.Size = new System.Drawing.Size(88, 83);
-            this.abilityIcon_pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.abilityIcon_pictureBox.TabIndex = 35;
-            this.abilityIcon_pictureBox.TabStop = false;
-            // 
-            // abilityDescription_readOnlyRichTextBox
-            // 
-            this.abilityDescription_readOnlyRichTextBox.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.abilityDescription_readOnlyRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.abilityDescription_readOnlyRichTextBox.Location = new System.Drawing.Point(127, 57);
-            this.abilityDescription_readOnlyRichTextBox.Name = "abilityDescription_readOnlyRichTextBox";
-            this.abilityDescription_readOnlyRichTextBox.Size = new System.Drawing.Size(379, 212);
-            this.abilityDescription_readOnlyRichTextBox.TabIndex = 36;
-            this.abilityDescription_readOnlyRichTextBox.Text = "";
-            // 
-            // abilityDescription_pictureBoxDummy
-            // 
-            this.abilityDescription_pictureBoxDummy.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.abilityDescription_pictureBoxDummy.Location = new System.Drawing.Point(115, 45);
-            this.abilityDescription_pictureBoxDummy.Name = "abilityDescription_pictureBoxDummy";
-            this.abilityDescription_pictureBoxDummy.Size = new System.Drawing.Size(403, 237);
-            this.abilityDescription_pictureBoxDummy.TabIndex = 38;
-            this.abilityDescription_pictureBoxDummy.TabStop = false;
-            // 
-            // selectedLevel_comboBox
-            // 
-            this.selectedLevel_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.selectedLevel_comboBox.FormattingEnabled = true;
-            this.selectedLevel_comboBox.Items.AddRange(new object[] {
-            "Learn skill"});
-            this.selectedLevel_comboBox.Location = new System.Drawing.Point(447, 13);
-            this.selectedLevel_comboBox.Name = "selectedLevel_comboBox";
-            this.selectedLevel_comboBox.Size = new System.Drawing.Size(69, 21);
-            this.selectedLevel_comboBox.TabIndex = 58;
-            // 
-            // abilityDescriptionDummy_pictureBox2
-            // 
-            this.abilityDescriptionDummy_pictureBox2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.abilityDescriptionDummy_pictureBox2.Image = global::Wc3Engine.Properties.Resources.TooltipBorder;
-            this.abilityDescriptionDummy_pictureBox2.Location = new System.Drawing.Point(113, 43);
-            this.abilityDescriptionDummy_pictureBox2.Name = "abilityDescriptionDummy_pictureBox2";
-            this.abilityDescriptionDummy_pictureBox2.Size = new System.Drawing.Size(407, 241);
-            this.abilityDescriptionDummy_pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.abilityDescriptionDummy_pictureBox2.TabIndex = 37;
-            this.abilityDescriptionDummy_pictureBox2.TabStop = false;
-            // 
-            // selectedLevel_label
-            // 
-            this.selectedLevel_label.AutoSize = true;
-            this.selectedLevel_label.Location = new System.Drawing.Point(405, 16);
-            this.selectedLevel_label.Name = "selectedLevel_label";
-            this.selectedLevel_label.Size = new System.Drawing.Size(36, 13);
-            this.selectedLevel_label.TabIndex = 61;
-            this.selectedLevel_label.Text = "Level:";
-            // 
-            // loadscreenTab
-            // 
-            this.loadscreenTab.Controls.Add(this.loadScreen_groupBox);
-            this.loadscreenTab.Location = new System.Drawing.Point(4, 25);
-            this.loadscreenTab.Name = "loadscreenTab";
-            this.loadscreenTab.Size = new System.Drawing.Size(876, 418);
-            this.loadscreenTab.TabIndex = 5;
-            this.loadscreenTab.Text = "Load screen";
-            this.loadscreenTab.UseVisualStyleBackColor = true;
-            // 
-            // loadScreen_groupBox
-            // 
-            this.loadScreen_groupBox.Location = new System.Drawing.Point(0, 0);
-            this.loadScreen_groupBox.Name = "loadScreen_groupBox";
-            this.loadScreen_groupBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.loadScreen_groupBox.Size = new System.Drawing.Size(876, 418);
-            this.loadScreen_groupBox.TabIndex = 0;
-            this.loadScreen_groupBox.TabStop = false;
-            this.loadScreen_groupBox.Text = "Load screen";
-            // 
             // playerSettingsTab
             // 
             this.playerSettingsTab.Location = new System.Drawing.Point(4, 25);
@@ -1085,7 +1007,7 @@
             this.editMapInfo_button.TabIndex = 9;
             this.editMapInfo_button.Text = "Edit";
             this.editMapInfo_button.UseVisualStyleBackColor = true;
-            this.editMapInfo_button.Click += new System.EventHandler(this.editMapInfo_button_Click);
+            this.editMapInfo_button.Click += new System.EventHandler(this.EditMapInfo_OnClick);
             // 
             // mapDescription_groupBox
             // 
@@ -1242,21 +1164,6 @@
             this.label1.Text = "Loading map...";
             this.label1.Visible = false;
             // 
-            // testMap_button
-            // 
-            this.testMap_button.AutoSize = true;
-            this.testMap_button.BackColor = System.Drawing.SystemColors.Control;
-            this.testMap_button.BackgroundImage = global::Wc3Engine.Properties.Resources.Test_map_icon;
-            this.testMap_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.testMap_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.testMap_button.Location = new System.Drawing.Point(918, 124);
-            this.testMap_button.MinimumSize = new System.Drawing.Size(64, 64);
-            this.testMap_button.Name = "testMap_button";
-            this.testMap_button.Size = new System.Drawing.Size(64, 64);
-            this.testMap_button.TabIndex = 6;
-            this.testMap_button.UseVisualStyleBackColor = false;
-            this.testMap_button.Click += new System.EventHandler(this.MapTest_Click);
-            // 
             // loadingCircle1
             // 
             this.loadingCircle1.Active = false;
@@ -1290,6 +1197,21 @@
             this.guiHelper_ToolTip.OwnerDraw = true;
             this.guiHelper_ToolTip.ReshowDelay = 100;
             this.guiHelper_ToolTip.Size = new System.Drawing.Size(200, 60);
+            // 
+            // testMap_button
+            // 
+            this.testMap_button.AutoSize = true;
+            this.testMap_button.BackColor = System.Drawing.SystemColors.Control;
+            this.testMap_button.BackgroundImage = global::Wc3Engine.Properties.Resources.Test_map_icon;
+            this.testMap_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.testMap_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.testMap_button.Location = new System.Drawing.Point(918, 124);
+            this.testMap_button.MinimumSize = new System.Drawing.Size(64, 64);
+            this.testMap_button.Name = "testMap_button";
+            this.testMap_button.Size = new System.Drawing.Size(64, 64);
+            this.testMap_button.TabIndex = 6;
+            this.testMap_button.UseVisualStyleBackColor = false;
+            this.testMap_button.Click += new System.EventHandler(this.MapTest_Click);
             // 
             // Wc3Engine
             // 
@@ -1326,6 +1248,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.LTVCustomAbilities)).EndInit();
             this.guihelper_panel.ResumeLayout(false);
             this.guihelper_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buffIcon_pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.abilityIcon_pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.abilityDescription_pictureBoxDummy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.abilityDescriptionDummy_pictureBox2)).EndInit();
+            this.loadscreenTab.ResumeLayout(false);
+            this.loadScreen_groupBox.ResumeLayout(false);
             this.missileBasics_panel.ResumeLayout(false);
             this.missileBasics_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).EndInit();
@@ -1338,13 +1266,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GUI_Missile_collision)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GUI_Missile_arc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GUI_Missile_speed)).EndInit();
-            this.GUIHelperAcc_panel.ResumeLayout(false);
-            this.GUIHelperAcc_panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buffIcon_pictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.abilityIcon_pictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.abilityDescription_pictureBoxDummy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.abilityDescriptionDummy_pictureBox2)).EndInit();
-            this.loadscreenTab.ResumeLayout(false);
             this.mapInfoTab.ResumeLayout(false);
             this.mapInfo_groupBox.ResumeLayout(false);
             this.mapinfo_subTabControl.ResumeLayout(false);
@@ -1432,32 +1353,30 @@
         public BrightIdeasSoftware.TreeListView LTVCustomAbilities;
         public BrightIdeasSoftware.OLVColumn name_olvColumn;
         public BrightIdeasSoftware.OLVColumn suffix_olvColumn;
-        private System.Windows.Forms.Panel GUIHelperAcc_panel;
-        private Opulos.Core.UI.Accordion GUIHelper_accordion;
-        private System.Windows.Forms.Label mi_count;
-        private System.Windows.Forms.Label mi_Variation;
-        private System.Windows.Forms.Label mi_castdist;
-        private System.Windows.Forms.Label mi_colli;
-        private System.Windows.Forms.Label mi_speed;
-        private System.Windows.Forms.Label mi_arc;
-        private System.Windows.Forms.Label mi_duration;
-        private System.Windows.Forms.Label mi_period;
-        private System.Windows.Forms.Label mi_dmg;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.CheckBox checkBox1;
-        public System.Windows.Forms.ComboBox comboBox1;
-        public System.Windows.Forms.NumericUpDown GUI_Missile_variation;
-        public System.Windows.Forms.NumericUpDown GUI_Missile_castdist;
-        public System.Windows.Forms.NumericUpDown GUI_Missile_collision;
-        public System.Windows.Forms.NumericUpDown GUI_Missile_speed;
-        public System.Windows.Forms.NumericUpDown GUI_Missile_arc;
-        public System.Windows.Forms.NumericUpDown GUI_Missile_duration;
-        public System.Windows.Forms.NumericUpDown GUI_Missile_period;
-        public System.Windows.Forms.NumericUpDown GUI_Missile_damage;
-        public System.Windows.Forms.NumericUpDown GUI_Missile_count;
         private System.Windows.Forms.GroupBox missileBasics_panel;
         public System.Windows.Forms.NumericUpDown numericUpDown11;
+        public System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label mi_count;
+        public System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.NumericUpDown GUI_Missile_count;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label mi_dmg;
+        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.NumericUpDown GUI_Missile_damage;
+        private System.Windows.Forms.Label mi_period;
+        public System.Windows.Forms.NumericUpDown GUI_Missile_variation;
+        public System.Windows.Forms.NumericUpDown GUI_Missile_period;
+        private System.Windows.Forms.Label mi_Variation;
+        private System.Windows.Forms.Label mi_duration;
+        public System.Windows.Forms.NumericUpDown GUI_Missile_castdist;
+        public System.Windows.Forms.NumericUpDown GUI_Missile_duration;
+        private System.Windows.Forms.Label mi_castdist;
+        private System.Windows.Forms.Label mi_arc;
+        public System.Windows.Forms.NumericUpDown GUI_Missile_collision;
+        public System.Windows.Forms.NumericUpDown GUI_Missile_arc;
+        private System.Windows.Forms.Label mi_colli;
+        private System.Windows.Forms.Label mi_speed;
+        public System.Windows.Forms.NumericUpDown GUI_Missile_speed;
     }
 }
 

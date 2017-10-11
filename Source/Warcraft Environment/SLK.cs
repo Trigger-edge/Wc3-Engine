@@ -186,12 +186,16 @@ namespace Wc3Engine
 
                         folderPath = folderPath + @"\" + subFolder;
 
-                        if (!Wc3Engine.StandarAbilitiesTab.FolderExist(folderPath))
-                            Wc3Engine.StandarAbilitiesTab.CreateFolder(folderPath);
+                        //if (!Wc3Engine.StandarAbilitiesTab.FolderExist(folderPath))
+                            //Wc3Engine.StandarAbilitiesTab.CreateFolder(folderPath);
 
                         string objectId = table[Field.code, sizeY].Replace("\"", null);
-
-                        Wc3Engine.StandarAbilitiesTab.CreateItem(folderPath + @"\" + DataField.GetValue(objectId, DataField.Name, StringList), objectId.ToIntObjectId());
+                        //string abilityPath = folderPath + @"\" + DataField.GetValue(objectId, DataField.Name, StringList);
+                        Ability.Create(folderPath + @"\" + 
+                            DataField.GetValue(objectId, DataField.Name, StringList), 
+                            DataField.GetValue(objectId, DataField.Name, StringList), 
+                            DataField.GetValue(objectId, DataField.EditorSuffix, StringList), objectId.ToIntObjectId());
+                        //Wc3Engine.StandarAbilitiesTab.CreateItem(folderPath + @"\" + DataField.GetValue(objectId, DataField.Name, StringList), objectId.ToIntObjectId());
                     }
                 }
             }
