@@ -42,14 +42,23 @@ namespace Wc3Engine
             Ability.TLVStandard = StandarAbilitiesTab;
             Ability.TLVCustom = CustomAbilitiesTab;
 
-            DataVisualizer.panel = GUIHelper_tableLayout;
-            //GUIHelper_accordion.Add(missileBasics_panel, "Missile Handle", "", 1, true);
+            DataVisualizer.mainPanel = GUIHelper_tableLayout;
 
-            DataVisualizer visualizer = new DataVisualizer("Test 1", 3);
+            /*DataVisualizer visualizer = new DataVisualizer("Test 1", 3);
             visualizer = new DataVisualizer("Test 2", 5);
             visualizer = new DataVisualizer("Test 3", 10);
-            //visualizer.Visible = false;
+            //visualizer.Visible = false;*/
+            List<string> test = new List<string>
+            {
+                "trigger edge",
+                "wtf!",
+                "test",
+            };
 
+            string test2 = "trigger e2";
+
+            if (test.Exists(x => x.Contains(test2)))
+                DebugMsg("funciona!");
 
 
             mainTabControl.SelectedTab = mapInfoTab;

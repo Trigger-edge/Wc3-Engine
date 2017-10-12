@@ -78,10 +78,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Source\GUI Helper\Controls\DataVisualizer.cs">
+    <Compile Include="Source\GUI Helper\Compiler.cs" />
+    <Compile Include="Source\GUI Helper\CompilerTypes.cs" />
+    <Compile Include="Source\GUI Helper\DataVisualizer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\GUI Helper\Controls\DataVisualizer.Designer.cs">
+    <Compile Include="Source\GUI Helper\DataVisualizer.Designer.cs">
       <DependentUpon>DataVisualizer.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\GUI Helper\TLVModels\TLVBase.cs" />
@@ -121,7 +123,7 @@
     </Compile>
     <Compile Include="Source\GUI Helper\GUIModule.cs" />
     <Compile Include="Source\GUI Helper\Ability.cs" />
-    <Compile Include="Source\GUI Helper\Controls\Missile.cs" />
+    <Compile Include="Source\GUI Helper\Missile.cs" />
     <Compile Include="Source\GUI Helper\NameSuffixDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,7 +250,7 @@
     <EmbeddedResource Include="Source\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\GUI Helper\Controls\DataVisualizer.resx">
+    <EmbeddedResource Include="Source\GUI Helper\DataVisualizer.resx">
       <DependentUpon>DataVisualizer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\GUI Helper\NameSuffixDialog.resx">
@@ -284,6 +286,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\arrow_up.png" />
+    <None Include="Resources\arrow_down.png" />
     <Content Include="Wc3Engine.ico" />
     <None Include="Source\ObjectListView\CustomDictionary.xml" />
     <None Include="Source\ObjectListView\FullClassDiagram.cd" />
